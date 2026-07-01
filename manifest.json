@@ -3,7 +3,7 @@
 	"name": "Daily Notes Compiler",
 	"version": "1.0.1",
 	"minAppVersion": "1.0.1",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
+	"description": "for compiling the daily notes or daily journals from a certain date range",
 	"author": "pragatinath",
 	"authorUrl": "https://github.com/pragatinath",
 	"fundingUrl": "",
