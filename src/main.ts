@@ -8,12 +8,12 @@ import {
 } from 'obsidian';
 import {
 	DEFAULT_SETTINGS,
-	MyPluginSettings,
+	NotesCompilerPluginSettings,
 	SampleSettingTab,
 } from './settings';
 
-export default class MyPlugin extends Plugin {
-	settings!: MyPluginSettings;
+export default class NotesCompilerPlugin extends Plugin {
+	settings!: NotesCompilerPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
@@ -36,13 +36,13 @@ export default class MyPlugin extends Plugin {
 		this.addSettingTab(new SampleSettingTab(this.app, this));
 	}
 
-	onunload() {}
+	onunload() { }
 
 	async loadSettings() {
 		this.settings = Object.assign(
 			{},
 			DEFAULT_SETTINGS,
-			(await this.loadData()) as Partial<MyPluginSettings>,
+			(await this.loadData()) as Partial<NotesCompilerPluginSettings>,
 		);
 	}
 
@@ -165,9 +165,9 @@ export default class MyPlugin extends Plugin {
 }
 
 class DateRangeCompileModal extends Modal {
-	private plugin: MyPlugin;
+	private plugin: NotesCompilerPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: NotesCompilerPlugin) {
 		super(app);
 		this.plugin = plugin;
 	}
@@ -212,7 +212,7 @@ class DateRangeCompileModal extends Modal {
 
 		const buttonRow = contentEl.createDiv({ cls: 'daily-notes-actions' });
 		const compileButton = buttonRow.createEl('button', { text: 'Compile' });
-		compileButton.addEventListener('click', async () => {
+		compileButton.addEventListener('click', () => {
 			const startValue = startInput.value;
 			const endValue = endInput.value;
 			if (!startValue || !endValue) {
@@ -228,7 +228,15 @@ class DateRangeCompileModal extends Modal {
 			}
 
 			this.close();
-			await this.plugin.compileNotesInRange(startValue, endValue);
+			// Fire-and-forget the async operation safely
+			(async () => {
+				try {
+					await this.plugin.compileNotesInRange(startValue, endValue);
+				} catch (error) {
+					console.error("Failed to compile notes:", error);
+					new Notice("An error occurred during compilation.");
+				}
+			})();
 		});
 	}
 
@@ -259,8 +267,8 @@ class DateRangeCompileModal extends Modal {
 			endDate = new Date(today.getFullYear(), today.getMonth(), 0);
 		}
 
-		const startInput = this.contentEl.querySelector('input[type="date"]') as HTMLInputElement | null;
-		const endInput = this.contentEl.querySelectorAll('input[type="date"]')[1] as HTMLInputElement | null;
+		const startInput = this.contentEl.querySelector('input[type="date"]')
+		const endInput = this.contentEl.querySelectorAll('input[type="date"]')[1]
 		if (startInput) {
 			startInput.value = this.formatDate(startDate);
 		}

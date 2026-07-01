@@ -1,22 +1,22 @@
 import { App, PluginSettingTab, Setting, TFolder } from 'obsidian';
-import MyPlugin from './main';
+import NotesCompilerPlugin from './main';
 
-export interface MyPluginSettings {
+export interface NotesCompilerPluginSettings {
 	mySetting: string;
 	dailyNotesFolder: string;
 	compiledOutputFolder: string;
 }
 
-export const DEFAULT_SETTINGS: MyPluginSettings = {
+export const DEFAULT_SETTINGS: NotesCompilerPluginSettings = {
 	mySetting: 'default',
 	dailyNotesFolder: '',
 	compiledOutputFolder: '',
 };
 
 export class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: NotesCompilerPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: NotesCompilerPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -58,7 +58,7 @@ export class SampleSettingTab extends PluginSettingTab {
 							this.plugin.settings.compiledOutputFolder = value;
 						}
 						await this.plugin.saveSettings();
-						this.display();
+						// this.display();
 					});
 			});
 
