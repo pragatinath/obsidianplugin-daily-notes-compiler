@@ -1,8 +1,8 @@
 {
 	"id": "daily-notes-compiler",
 	"name": "Daily Notes Compiler",
-	"version": "1.0.1",
-	"minAppVersion": "1.0.1",
+	"version": "1.0.2",
+	"minAppVersion": "1.0.2",
 	"description": "For compiling the daily notes or daily journals from a certain date range.",
 	"author": "pragatinath",
 	"authorUrl": "https://github.com/pragatinath",
