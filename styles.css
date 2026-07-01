@@ -1,8 +1,74 @@
-/*
+.daily-notes-compile-modal {
+	padding: 8px 4px 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.daily-notes-compile-modal h2 {
+	margin: 0;
+}
 
-If your plugin does not need CSS, delete this file.
+.daily-notes-compile-modal p {
+	margin: 0;
+	opacity: 0.8;
+}
 
-*/
+.daily-notes-card {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 10px;
+	padding: 12px;
+	background: var(--background-secondary-alt);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.daily-notes-preset-row {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.daily-notes-preset-row button,
+.daily-notes-actions button {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	padding: 6px 10px;
+	background: var(--background-primary);
+	cursor: pointer;
+}
+
+.daily-notes-date-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 10px;
+}
+
+.daily-notes-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.daily-notes-field label {
+	font-size: 0.9em;
+	font-weight: 600;
+}
+
+.daily-notes-field input {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	padding: 6px 8px;
+}
+
+.daily-notes-actions {
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 4px;
+}
+
+.daily-notes-actions button {
+	padding: 8px 12px;
+	font-weight: 600;
+}
