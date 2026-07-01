@@ -267,8 +267,8 @@ class DateRangeCompileModal extends Modal {
 			endDate = new Date(today.getFullYear(), today.getMonth(), 0);
 		}
 
-		const startInput = this.contentEl.querySelector('input[type="date"]')
-		const endInput = this.contentEl.querySelectorAll('input[type="date"]')[1]
+		const startInput = this.contentEl.querySelector('input[type="date"]') as HTMLInputElement;
+		const endInput = this.contentEl.querySelectorAll('input[type="date"]')[1] as HTMLInputElement;
 		if (startInput) {
 			startInput.value = this.formatDate(startDate);
 		}
