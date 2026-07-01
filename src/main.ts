@@ -9,7 +9,7 @@ import {
 import {
 	DEFAULT_SETTINGS,
 	NotesCompilerPluginSettings,
-	SampleSettingTab,
+	NotesCompilerSettingTab,
 } from './settings';
 
 export default class NotesCompilerPlugin extends Plugin {
@@ -33,7 +33,7 @@ export default class NotesCompilerPlugin extends Plugin {
 			},
 		});
 
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new NotesCompilerSettingTab(this.app, this));
 	}
 
 	onunload() { }
@@ -236,7 +236,7 @@ class DateRangeCompileModal extends Modal {
 					console.error("Failed to compile notes:", error);
 					new Notice("An error occurred during compilation.");
 				}
-			})();
+			})().catch(console.error);
 		});
 	}
 

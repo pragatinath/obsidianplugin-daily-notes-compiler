@@ -13,7 +13,7 @@ export const DEFAULT_SETTINGS: NotesCompilerPluginSettings = {
 	compiledOutputFolder: '',
 };
 
-export class SampleSettingTab extends PluginSettingTab {
+export class NotesCompilerSettingTab extends PluginSettingTab {
 	plugin: NotesCompilerPlugin;
 
 	constructor(app: App, plugin: NotesCompilerPlugin) {
